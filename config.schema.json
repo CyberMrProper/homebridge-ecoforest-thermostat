@@ -30,13 +30,13 @@
         "type": "string",
         "required": true
       },
-      "temperatureHotTolerance": {
+      "temperatureColdTolerance": {
         "title": "Temperature Cold Tolerance",
         "type": "number",
         "minimum": 0,
         "default": 0.5
       },
-      "temperatureColdTolerance": {
+      "temperatureHotTolerance": {
         "title": "Temperature Hot Tolerance",
         "type": "number",
         "minimum": 0,
