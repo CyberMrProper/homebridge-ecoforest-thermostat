@@ -30,11 +30,107 @@
         "type": "string",
         "required": true
       },
-      "temperatureTolerance": {
-        "title": "Temperature Tolerance",
+      "temperatureHotTolerance": {
+        "title": "Temperature Cold Tolerance",
         "type": "number",
         "minimum": 0,
         "default": 0.5
+      },
+      "temperatureColdTolerance": {
+        "title": "Temperature Hot Tolerance",
+        "type": "number",
+        "minimum": 0,
+        "default": 0.5
+      },
+      "minPowerLevel": {
+        "title": "Minimum Power Level",
+        "type": "number",
+        "minimum": 1,
+        "maximum": 9,
+        "default": 1,
+        "oneOf": [
+          {
+            "title": "1",
+            "enum": [1]
+          },
+          {
+            "title": "2",
+            "enum": [2]
+          },
+          {
+            "title": "3",
+            "enum": [3]
+          },
+          {
+            "title": "4",
+            "enum": [4]
+          },
+          {
+            "title": "5",
+            "enum": [5]
+          },
+          {
+            "title": "6",
+            "enum": [6]
+          },
+          {
+            "title": "7",
+            "enum": [7]
+          },
+          {
+            "title": "8",
+            "enum": [8]
+          },
+          {
+            "title": "9",
+            "enum": [9]
+          }
+        ]
+      },
+      "maxPowerLevel": {
+        "title": "Maximum Power Level",
+        "type": "number",
+        "minimum": 1,
+        "maximum": 9,
+        "default": 9,
+        "oneOf": [
+          {
+            "title": "1",
+            "enum": [1]
+          },
+          {
+            "title": "2",
+            "enum": [2]
+          },
+          {
+            "title": "3",
+            "enum": [3]
+          },
+          {
+            "title": "4",
+            "enum": [4]
+          },
+          {
+            "title": "5",
+            "enum": [5]
+          },
+          {
+            "title": "6",
+            "enum": [6]
+          },
+          {
+            "title": "7",
+            "enum": [7]
+          },
+          {
+            "title": "8",
+            "enum": [8]
+          },
+          {
+            "title": "9",
+            "enum": [9]
+          }
+        ]
       },
       "pullInterval": {
         "title": "Pull Interval",
@@ -71,10 +167,19 @@
       "type": "flex",
       "flex-flow": "row wrap",
       "items": [
-        "temperatureTolerance",
-        "pullInterval"
+        "temperatureColdTolerance",
+        "temperatureHotTolerance"
       ]
     },
+    {
+      "type": "flex",
+      "flex-flow": "row wrap",
+      "items": [
+        "minPowerLevel",
+        "maxPowerLevel"
+      ]
+    },
+    "pullInterval",
     {
       "type": "section",
       "title": "Manufacturer Settings",

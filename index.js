@@ -7,7 +7,7 @@ const PullTimer = _http_base.PullTimer;
 module.exports = function(homebridge){
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
-  homebridge.registerAccessory("homebridge-ecoforest-thermostat", "EcoforestThermostat", EcoforestThermostat);
+  homebridge.registerAccessory("homebridge-ecoforest-thermostat2", "EcoforestThermostat", EcoforestThermostat);
 };
 
 class EcoforestThermostat {
@@ -28,7 +28,10 @@ class EcoforestThermostat {
     this.maxTemp = config.maxTemp || 35;
     this.minTemp = config.minTemp || 12;
     this.temperatureFilePath = config.temperatureFilePath;
-    this.temperatureTolerance = config.temperatureTolerance;
+    this.temperatureColdTolerance = config.temperatureColdTolerance;
+    this.temperatureHotTolerance = config.temperatureHotTolerance;
+    this.minPowerLevel = config.minPowerLevel || 1;
+    this.maxPowerLevel = config.maxPowerLevel || 9;
     this.currentHeaterPower = 1;
   
     if(this.username != null && this.password != null){
@@ -85,6 +88,7 @@ class EcoforestThermostat {
   }
 
   refreshEcoforestThermostatStatus() {
+
     this.updateTemperatureFromFile(() => {
 
       this.updateStatusFromHeater(() => {
@@ -95,17 +99,17 @@ class EcoforestThermostat {
         var heatingThresholdTemperature = this.service.getCharacteristic(Characteristic.HeatingThresholdTemperature).value;
 
         if (heaterActiveStatus){
-          if (currentTemperature > heatingThresholdTemperature + this.temperatureTolerance){
-            if (this.currentHeaterPower != 1) {
+          if (currentTemperature > heatingThresholdTemperature + this.temperatureHotTolerance){
+            if (this.currentHeaterPower != this.minPowerLevel) {
               this.log.info("Room is too hot, setting power to low");
-              this.setHeaterPower(1);
+              this.setHeaterPower(this.minPowerLevel);
             }
           }
   
-          if (currentTemperature < heatingThresholdTemperature - this.temperatureTolerance){
-            if (this.currentHeaterPower != 9) {
+          if (currentTemperature < heatingThresholdTemperature - this.temperatureColdTolerance){
+            if (this.currentHeaterPower != this.maxPowerLevel) {
               this.log.info("Room is too cold, setting power to high");
-              this.setHeaterPower(9);
+              this.setHeaterPower(this.maxPowerLevel);
             }
           }
         }
@@ -130,7 +134,7 @@ class EcoforestThermostat {
 
       const lines = data.split(/\r?\n/);
       if (/^[0-9]+\.*[0-9]*$/.test(lines[0])) {
-        newCurrentTemperature = parseFloat(data);
+        newCurrentTemperature = parseFloat(data).toFixed(1);
       } else {
         lines.forEach((line) => {
           if (-1 < line.indexOf(':')) {
@@ -141,7 +145,7 @@ class EcoforestThermostat {
         });
       }
 
-      var oldCurrentTemperature = this.service.getCharacteristic(Characteristic.CurrentTemperature).value;
+      var oldCurrentTemperature = this.service.getCharacteristic(Characteristic.CurrentTemperature).value.toFixed(1);
       if (newCurrentTemperature != oldCurrentTemperature){
         this.service.getCharacteristic(Characteristic.CurrentTemperature).updateValue(newCurrentTemperature);
         this.log.info("Changing CurrentTemperature from %s to %s", oldCurrentTemperature, newCurrentTemperature);
