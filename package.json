@@ -1,0 +1,32 @@
+{
+  "name": "homebridge-ecoforest-thermostat",
+  "displayName": "Homebridge Ecoforest Thermostat",
+  "version": "1.0.0",
+  "description": "Ecoforest thermostat plugin for homebridge: https://github.com/homebridge/homebridge",
+  "license": "ISC",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "engines": {
+    "node": ">=10.17.0",
+    "homebridge": ">=1.0.0"
+  },
+  "author": "Cyber MrProper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyberMrProper/homebridge-ecoforest-thermostat.git"
+  },
+  "dependencies": {
+    "request": "^2.65.0",
+    "homebridge-http-base": "2.1.6"
+  },
+  "bugs": {
+    "url": "https://github.com/CyberMrProper/homebridge-ecoforest-thermostat/issues"
+  },
+  "homepage": "https://github.com/CyberMrProper/homebridge-ecoforest-thermostat#readme",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

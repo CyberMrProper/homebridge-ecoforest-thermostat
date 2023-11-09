@@ -1,0 +1,77 @@
+{
+  "pluginAlias": "EcoforestThermostat",
+  "pluginType": "accessory",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "minLength": 1,
+        "required": true
+      },
+      "apiroute": {
+        "title": "IP",
+        "type": "string",
+        "required": true
+      },
+      "username": {
+        "title": "Username",
+        "type": "string",
+        "required": true
+      },
+      "password": {
+        "title": "Password",
+        "type": "string",
+        "required": true
+      },
+      "temperatureFilePath": {
+        "title": "Temperature File",
+        "type": "string",
+        "required": true
+      },
+      "pullInterval": {
+        "title": "Pull Interval",
+        "type": "integer",
+        "default": 10000
+      },
+      "manufacturer": {
+        "name": "Manufacturer",
+        "type": "string"
+      },
+      "model": {
+        "name": "Model",
+        "type": "string"
+      },
+      "serialNumber": {
+        "name": "Serial Number",
+        "type": "string"
+      }
+    }
+  },
+  "layout": [
+    "name",
+    "apiroute",
+    {
+      "type": "flex",
+      "flex-flow": "row wrap",
+      "items": [
+        "username",
+        "password"
+      ]
+    },
+    "temperatureFilePath",
+    "pullInterval",
+    {
+      "type": "section",
+      "title": "Manufacturer Settings",
+      "expandable": true,
+      "expanded": false,
+      "items": [
+        "manufacturer",
+        "model",
+        "serialNumber"
+      ]
+    }
+  ]
+}
