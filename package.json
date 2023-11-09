@@ -17,15 +17,14 @@
     "url": "git+https://github.com/CyberMrProper/homebridge-ecoforest-thermostat.git"
   },
   "dependencies": {
-    "request": "^2.65.0",
-    "homebridge-http-base": "2.1.6"
+    "homebridge-http-base": "2.1.6",
+    "request": "^2.65.0"
   },
   "bugs": {
     "url": "https://github.com/CyberMrProper/homebridge-ecoforest-thermostat/issues"
   },
   "homepage": "https://github.com/CyberMrProper/homebridge-ecoforest-thermostat#readme",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }

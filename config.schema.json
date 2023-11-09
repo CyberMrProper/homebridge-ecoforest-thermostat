@@ -30,6 +30,12 @@
         "type": "string",
         "required": true
       },
+      "temperatureTolerance": {
+        "title": "Temperature Tolerance",
+        "type": "number",
+        "minimum": 0,
+        "default": 0.5
+      },
       "pullInterval": {
         "title": "Pull Interval",
         "type": "integer",
@@ -61,7 +67,14 @@
       ]
     },
     "temperatureFilePath",
-    "pullInterval",
+    {
+      "type": "flex",
+      "flex-flow": "row wrap",
+      "items": [
+        "temperatureTolerance",
+        "pullInterval"
+      ]
+    },
     {
       "type": "section",
       "title": "Manufacturer Settings",
