@@ -125,10 +125,13 @@ class EcoforestThermostat {
     fs.readFile(this.temperatureFilePath, 'utf8', (err, data) => {
       if (err) {
         this.log.warn(err.message);
+        callback();
+        return;
       }
 
       if (data === undefined || data.trim().length === 0) {
         this.log.warn(`updateTemperatureFromFile error reading file: ${this.temperatureFilePath}, using previous Temperature`);
+        callback();
         return;
       }
 
