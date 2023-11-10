@@ -128,7 +128,7 @@ class EcoforestThermostat {
       }
 
       if (data === undefined || data.trim().length === 0) {
-        this.log.warn(`updateTemperatureFromFile error reading file: ${temperatureFilePath}, using previous Temperature`);
+        this.log.warn(`updateTemperatureFromFile error reading file: ${this.temperatureFilePath}, using previous Temperature`);
         return;
       }
 
