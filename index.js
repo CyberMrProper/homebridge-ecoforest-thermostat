@@ -95,8 +95,8 @@ class EcoforestThermostat {
         
         //Update potencia if needed
         var heaterActiveStatus = this.service.getCharacteristic(Characteristic.Active).value;
-        var currentTemperature = this.service.getCharacteristic(Characteristic.CurrentTemperature).value;
-        var heatingThresholdTemperature = this.service.getCharacteristic(Characteristic.HeatingThresholdTemperature).value;
+        var currentTemperature = this.service.getCharacteristic(Characteristic.CurrentTemperature).value.toFixed(1);
+        var heatingThresholdTemperature = this.service.getCharacteristic(Characteristic.HeatingThresholdTemperature).value.toFixed(1);
 
         if (heaterActiveStatus){
           if (currentTemperature > heatingThresholdTemperature + this.temperatureHotTolerance){
