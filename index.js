@@ -28,8 +28,8 @@ class EcoforestThermostat {
     this.maxTemp = config.maxTemp || 35;
     this.minTemp = config.minTemp || 12;
     this.temperatureFilePath = config.temperatureFilePath;
-    this.temperatureColdTolerance = config.temperatureColdTolerance || 0.5;
-    this.temperatureHotTolerance = config.temperatureHotTolerance || 0.5;
+    this.temperatureColdTolerance = parseFloat(config.temperatureColdTolerance || 0.5);
+    this.temperatureHotTolerance = parseFloat(config.temperatureHotTolerance || 0.5);
     this.minPowerLevel = config.minPowerLevel || 1;
     this.maxPowerLevel = config.maxPowerLevel || 9;
     this.currentHeaterPower = 1;
@@ -95,8 +95,8 @@ class EcoforestThermostat {
         
         //Update potencia if needed
         var heaterActiveStatus = this.service.getCharacteristic(Characteristic.Active).value;
-        var currentTemperature = this.service.getCharacteristic(Characteristic.CurrentTemperature).value.toFixed(1);
-        var heatingThresholdTemperature = this.service.getCharacteristic(Characteristic.HeatingThresholdTemperature).value.toFixed(1);
+        var currentTemperature = parseFloat(this.service.getCharacteristic(Characteristic.CurrentTemperature).value.toFixed(1));
+        var heatingThresholdTemperature = parseFloat(this.service.getCharacteristic(Characteristic.HeatingThresholdTemperature).value.toFixed(1));
 
         if (heaterActiveStatus){
           if (currentTemperature > heatingThresholdTemperature + this.temperatureHotTolerance){
