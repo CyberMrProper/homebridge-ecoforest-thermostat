@@ -28,8 +28,8 @@ class EcoforestThermostat {
     this.maxTemp = config.maxTemp || 35;
     this.minTemp = config.minTemp || 12;
     this.temperatureFilePath = config.temperatureFilePath;
-    this.temperatureColdTolerance = parseFloat(config.temperatureColdTolerance || 0.5);
-    this.temperatureHotTolerance = parseFloat(config.temperatureHotTolerance || 0.5);
+    this.temperatureColdTolerance = parseFloat(config.temperatureColdTolerance);
+    this.temperatureHotTolerance = parseFloat(config.temperatureHotTolerance);
     this.minPowerLevel = config.minPowerLevel || 1;
     this.maxPowerLevel = config.maxPowerLevel || 9;
     this.currentHeaterPower = 1;
