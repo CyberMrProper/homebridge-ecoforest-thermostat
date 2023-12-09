@@ -5,7 +5,7 @@
 ## Installation
 
 1. Install [homebridge](https://github.com/homebridge/homebridge#installation-details)
-2. Install this plugin: `npm install -g homebridge-ecoforest-thermostat2`
+2. Install this plugin: `npm install -g homebridge-ecoforest-thermostat`
 3. Update your `config.json` file (See below).
 
 ## Configuration example

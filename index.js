@@ -7,7 +7,7 @@ const PullTimer = _http_base.PullTimer;
 module.exports = function(homebridge){
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
-  homebridge.registerAccessory("homebridge-ecoforest-thermostat2", "EcoforestThermostat", EcoforestThermostat);
+  homebridge.registerAccessory("homebridge-ecoforest-thermostat", "EcoforestThermostat", EcoforestThermostat);
 };
 
 class EcoforestThermostat {

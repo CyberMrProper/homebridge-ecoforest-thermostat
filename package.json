@@ -1,7 +1,7 @@
 {
-  "name": "homebridge-ecoforest-thermostat2",
+  "name": "homebridge-ecoforest-thermostat",
   "displayName": "Homebridge Ecoforest Thermostat",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Ecoforest thermostat plugin for homebridge: https://github.com/homebridge/homebridge",
   "license": "ISC",
   "icon": "https://raw.githubusercontent.com/CyberMrProper/homebridge-ecoforest-thermostat/main/logo.png",
