@@ -119,6 +119,11 @@ class EcoforestThermostat {
   }
 
   updateTemperatureFromFile(callback){
+    if (!this.temperatureFilePath) {
+      callback();
+      return;
+    }
+
     this.log.debug("Executing UpdateTemperatureFromFile:", this.temperatureFilePath);
 
     var newCurrentTemperature = this.service.getCharacteristic(Characteristic.CurrentTemperature).value;;
