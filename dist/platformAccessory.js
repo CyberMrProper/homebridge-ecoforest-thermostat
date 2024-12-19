@@ -142,6 +142,10 @@ class EcoforestThermostatAccessory {
     async setTargetHeatingCoolingState(value) {
         this.heaterState.TargetHeaterCoolerState = Number(value);
         this.log.debug('Set Target Heating Cooling State ->', value);
+        if (this.heaterState.Active === this.platform.Characteristic.Active.INACTIVE) {
+            this.log.debug('Heater is inactive, turing it on.');
+            this.setActiveState(this.platform.Characteristic.Active.ACTIVE);
+        }
     }
     async getTargetHeatingCoolingState() {
         const state = this.heaterState.TargetHeaterCoolerState;
@@ -271,7 +275,7 @@ class EcoforestThermostatAccessory {
     }
     async updatePowerIfNeeded() {
         this.log.debug("Updating power if needed");
-        if (this.heaterState.Active === 1) {
+        if (this.heaterState.Active === this.platform.Characteristic.Active.ACTIVE) {
             if (this.heaterState.CurrentTemperature > (this.heaterState.HeatingThresholdTemperature + this.temperatureHotTolerance)) {
                 if (this.heaterState.CurrentPower != this.minPowerLevel) {
                     this.log.info("Room is too hot, setting power to low");
@@ -336,7 +340,7 @@ class EcoforestThermostatAccessory {
     refreshCurrentHeaterCoolerState() {
         var oldCurrentHeaterCoolerState = this.heaterState.CurrentHeaterCoolerState;
         var newCurrentHeaterCoolerState = 0;
-        if (this.heaterState.Active === 1) {
+        if (this.heaterState.Active === this.platform.Characteristic.Active.ACTIVE) {
             newCurrentHeaterCoolerState =
                 this.heaterState.CurrentTemperature <= this.heaterState.HeatingThresholdTemperature
                     ? this.platform.Characteristic.CurrentHeaterCoolerState.HEATING
