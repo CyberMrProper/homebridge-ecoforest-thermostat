@@ -151,6 +151,7 @@ export class EcoforestThermostatAccessory {
     if (this.heaterState.Active === this.platform.Characteristic.Active.INACTIVE) {
       this.log.debug('Heater is inactive, turing it on.');
       this.setActiveState(this.platform.Characteristic.Active.ACTIVE);
+      this.service.getCharacteristic(this.platform.Characteristic.Active).updateValue(this.heaterState.Active);
     }
   }
 

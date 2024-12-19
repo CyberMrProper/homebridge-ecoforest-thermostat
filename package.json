@@ -1,7 +1,7 @@
 {
   "name": "homebridge-ecoforest-thermostat",
   "displayName": "Homebridge Ecoforest Thermostat",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "main": "dist/platform.js",
   "scripts": {
     "clean": "rimraf ./dist",
