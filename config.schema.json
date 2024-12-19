@@ -1,194 +1,202 @@
 {
-  "pluginAlias": "EcoforestThermostat",
-  "pluginType": "accessory",
+  "pluginAlias": "EcoforestThermostatPlatform",
+  "pluginType": "platform",
+  "singular": true,
   "schema": {
-    "type": "object",
-    "properties": {
-      "name": {
-        "title": "Name",
-        "type": "string",
-        "minLength": 1,
-        "required": true
-      },
-      "apiroute": {
-        "title": "IP",
-        "type": "string",
-        "required": true
-      },
-      "username": {
-        "title": "Username",
-        "type": "string",
-        "required": true
-      },
-      "password": {
-        "title": "Password",
-        "type": "string",
-        "required": true
-      },
-      "temperatureFilePath": {
-        "title": "Temperature File",
-        "type": "string",
-        "required": true
-      },
-      "temperatureColdTolerance": {
-        "title": "Temperature Cold Tolerance",
-        "type": "number",
-        "minimum": 0,
-        "default": 0.5
-      },
-      "temperatureHotTolerance": {
-        "title": "Temperature Hot Tolerance",
-        "type": "number",
-        "minimum": 0,
-        "default": 0.5
-      },
-      "minPowerLevel": {
-        "title": "Minimum Power Level",
-        "type": "number",
-        "minimum": 1,
-        "maximum": 9,
-        "default": 1,
-        "oneOf": [
-          {
-            "title": "1",
-            "enum": [1]
+    "name": {
+      "title": "Name",
+      "type": "string",
+      "default": "Ecoforest Thermostat"
+    },
+    "accessories": {
+      "type": "array",
+      "title": "Thermostat",
+      "items": {
+        "type": "object",
+        "title": "Thermostat",
+        "required": ["name", "apiEndpoint", "username", "password", "temperatureFilePath"],
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "minLength": 1
           },
-          {
-            "title": "2",
-            "enum": [2]
+          "apiEndpoint": {
+            "title": "IP",
+            "type": "string"
           },
-          {
-            "title": "3",
-            "enum": [3]
+          "username": {
+            "title": "Username",
+            "type": "string"
           },
-          {
-            "title": "4",
-            "enum": [4]
+          "password": {
+            "title": "Password",
+            "type": "string"
           },
-          {
-            "title": "5",
-            "enum": [5]
+          "temperatureFilePath": {
+            "title": "Temperature File",
+            "type": "string"
           },
-          {
-            "title": "6",
-            "enum": [6]
+          "temperatureColdTolerance": {
+            "title": "Temperature Cold Tolerance",
+            "type": "number",
+            "minimum": 0,
+            "default": 0.5
           },
-          {
-            "title": "7",
-            "enum": [7]
+          "temperatureHotTolerance": {
+            "title": "Temperature Hot Tolerance",
+            "type": "number",
+            "minimum": 0,
+            "default": 0.5
           },
-          {
-            "title": "8",
-            "enum": [8]
+          "minPowerLevel": {
+            "title": "Minimum Power Level",
+            "type": "number",
+            "minimum": 1,
+            "maximum": 9,
+            "default": 1,
+            "oneOf": [
+              {
+                "title": "1",
+                "enum": [1]
+              },
+              {
+                "title": "2",
+                "enum": [2]
+              },
+              {
+                "title": "3",
+                "enum": [3]
+              },
+              {
+                "title": "4",
+                "enum": [4]
+              },
+              {
+                "title": "5",
+                "enum": [5]
+              },
+              {
+                "title": "6",
+                "enum": [6]
+              },
+              {
+                "title": "7",
+                "enum": [7]
+              },
+              {
+                "title": "8",
+                "enum": [8]
+              },
+              {
+                "title": "9",
+                "enum": [9]
+              }
+            ]
           },
-          {
-            "title": "9",
-            "enum": [9]
+          "maxPowerLevel": {
+            "title": "Maximum Power Level",
+            "type": "number",
+            "minimum": 1,
+            "maximum": 9,
+            "default": 9,
+            "oneOf": [
+              {
+                "title": "1",
+                "enum": [1]
+              },
+              {
+                "title": "2",
+                "enum": [2]
+              },
+              {
+                "title": "3",
+                "enum": [3]
+              },
+              {
+                "title": "4",
+                "enum": [4]
+              },
+              {
+                "title": "5",
+                "enum": [5]
+              },
+              {
+                "title": "6",
+                "enum": [6]
+              },
+              {
+                "title": "7",
+                "enum": [7]
+              },
+              {
+                "title": "8",
+                "enum": [8]
+              },
+              {
+                "title": "9",
+                "enum": [9]
+              }
+            ]
+          },
+          "pullInterval": {
+            "title": "Pull Interval",
+            "type": "integer",
+            "default": 10000
           }
-        ]
-      },
-      "maxPowerLevel": {
-        "title": "Maximum Power Level",
-        "type": "number",
-        "minimum": 1,
-        "maximum": 9,
-        "default": 9,
-        "oneOf": [
-          {
-            "title": "1",
-            "enum": [1]
-          },
-          {
-            "title": "2",
-            "enum": [2]
-          },
-          {
-            "title": "3",
-            "enum": [3]
-          },
-          {
-            "title": "4",
-            "enum": [4]
-          },
-          {
-            "title": "5",
-            "enum": [5]
-          },
-          {
-            "title": "6",
-            "enum": [6]
-          },
-          {
-            "title": "7",
-            "enum": [7]
-          },
-          {
-            "title": "8",
-            "enum": [8]
-          },
-          {
-            "title": "9",
-            "enum": [9]
-          }
-        ]
-      },
-      "pullInterval": {
-        "title": "Pull Interval",
-        "type": "integer",
-        "default": 10000
-      },
-      "manufacturer": {
-        "name": "Manufacturer",
-        "type": "string"
-      },
-      "model": {
-        "name": "Model",
-        "type": "string"
-      },
-      "serialNumber": {
-        "name": "Serial Number",
-        "type": "string"
+        }
       }
     }
   },
   "layout": [
-    "name",
-    "apiroute",
-    {
-      "type": "flex",
-      "flex-flow": "row wrap",
-      "items": [
-        "username",
-        "password"
-      ]
-    },
-    "temperatureFilePath",
-    {
-      "type": "flex",
-      "flex-flow": "row wrap",
-      "items": [
-        "temperatureColdTolerance",
-        "temperatureHotTolerance"
-      ]
-    },
-    {
-      "type": "flex",
-      "flex-flow": "row wrap",
-      "items": [
-        "minPowerLevel",
-        "maxPowerLevel"
-      ]
-    },
-    "pullInterval",
     {
       "type": "section",
-      "title": "Manufacturer Settings",
+      "title": "Thermostats",
       "expandable": true,
-      "expanded": false,
+      "expanded": true,
       "items": [
-        "manufacturer",
-        "model",
-        "serialNumber"
+        {
+          "key": "accessories",
+          "type": "array",
+          "orderable": false,
+          "buttonText": "Add Thermostat",
+          "items": [
+            "accessories[].name",
+            "accessories[].apiEndpoint",
+            {
+              "key": "accessories[]",
+              "title": "",
+              "type": "flex",
+              "flex-flow": "row wrap",
+              "items": [
+                "accessories[].username",
+                "accessories[].password"
+              ]
+            },
+            "accessories[].temperatureFilePath",
+            {
+              "key": "accessories[]",
+              "title": "",
+              "type": "flex",
+              "flex-flow": "row wrap",
+              "items": [
+                "accessories[].temperatureColdTolerance",
+                "accessories[].temperatureHotTolerance"
+              ]
+            },
+            {
+              "key": "accessories[]",
+              "title": "",
+              "type": "flex",
+              "flex-flow": "row wrap",
+              "items": [
+                "accessories[].minPowerLevel",
+                "accessories[].maxPowerLevel"
+              ]
+            },
+            "accessories[].pullInterval"
+          ]
+        }
       ]
     }
   ]
